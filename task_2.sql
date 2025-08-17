@@ -9,7 +9,7 @@ CREATE TABLE Books (
     book_id INT PRIMARY KEY,
     title VARCHAR(130) NOT NULL,
     author_id INT,
-    price DOUBLE,
+    price DECIMAL(10, 2),
     publication_date DATE,
     FOREIGN KEY(author_id) REFERENCES Authors(author_id)
 );
@@ -35,7 +35,7 @@ CREATE TABLE Order_Details (
     orderdetailid INT PRIMARY KEY,
     order_id INT,
     book_id INT,
-    quantity DOUBLE,
+    quantity INT,
     FOREIGN KEY(order_id) REFERENCES Orders(order_id),
     FOREIGN KEY(book_id) REFERENCES Books(book_id)
 );
