@@ -1,27 +1,3 @@
--- Create the Authors table
-CREATE TABLE Authors (
-    author_id INT PRIMARY KEY,
-    author_name VARCHAR(255) NOT NULL
-);
-
--- Create the Books table
-CREATE TABLE Books (
-    book_id INT PRIMARY KEY,
-    title VARCHAR(130) NOT NULL,
-    author_id INT,
-    price DOUBLE,
-    publication_date DATE,
-    FOREIGN KEY(author_id) REFERENCES Authors(author_id)
-);
-
--- Create the Customers table
-CREATE TABLE Customers (
-    customer_id INT PRIMARY KEY,
-    customer_name VARCHAR(215) NOT NULL,
-    email VARCHAR(215) NOT NULL,
-    address TEXT
-);
-
 -- Create the Orders table
 CREATE TABLE Orders (
     order_id INT PRIMARY KEY,
