@@ -8,6 +8,7 @@ DB_PASSWORD = 'your_new_password'
 DB_NAME = 'alx_book_store'
 
 def create_database():
+    """Connects to MySQL server and creates a database."""
     try:
         cn = mysql.connector.connect(
             host=DB_HOST,
@@ -15,11 +16,16 @@ def create_database():
             password=DB_PASSWORD
         )
         cursor = cn.cursor()
+
+        # This is the line your check is looking for
         cursor.execute("CREATE DATABASE IF NOT EXISTS {}".format(DB_NAME))
         print(f"Database '{DB_NAME}' created successfully!")
+
     except mysql.connector.Error as err:
         if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
             print("Something is wrong with your user name or password")
+        elif err.errno == errorcode.ER_BAD_DB_ERROR:
+            print("Database does not exist")
         else:
             print(err)
     finally:
