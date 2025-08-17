@@ -16,11 +16,11 @@ def create_database():
             password=DB_PASSWORD
         )
         cursor = cn.cursor()
-
+        
         # This is the line your check is looking for
         cursor.execute("CREATE DATABASE IF NOT EXISTS {}".format(DB_NAME))
         print(f"Database '{DB_NAME}' created successfully!")
-
+    
     except mysql.connector.Error as err:
         if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
             print("Something is wrong with your user name or password")
